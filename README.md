@@ -1,2 +1,2 @@
 # Apolo-11
-Repositorio que contiene la implementación del trabajo final para el Bootcamp de Python Básico de Softserve.
+Repo that contains the implementation of the work done for workshop's final level 
