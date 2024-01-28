@@ -1,7 +1,7 @@
 from enums.status import Status
 from enums.mission import Mission
 from enums.devices import Devices
-from modules.random_date_generator import RandomDateGenerator
+from modules.event_generator.random_date_generator import RandomDateGenerator
 from datetime import datetime
 
 import random
@@ -9,12 +9,19 @@ import random
 class Event:
   date: datetime
   mission: Mission 
-  device_type: Devices = Devices.UNKN
+  device_type: Devices = Devices.UNKNOWN
   device_status: Status = Status.UNKNOWN
   hash: str = ""
   values: dict
   
-  __device_categories = [device for device in Devices if device != Devices.UNKN]
+  __device_categories = [device for device in Devices if device != Devices.UNKNOWN]
+  
+  def __init__(self, date: str, mission: Mission, device_type: Devices, device_status: Status, hash: str):
+      self.date = date
+      self.mission = mission
+      self.device_type = device_type
+      self.device_status = device_status
+      self.hash = hash
   
   def __init__(self):
     self.date = RandomDateGenerator()
