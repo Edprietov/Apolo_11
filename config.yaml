@@ -1,2 +1,4 @@
-simulation_life_time = 20
-files_per_batch = 100
+simulation_duration: 20
+files_per_batch: 100
+initial_date: 1/1/2008 1:30 PM
+final_date: 1/1/2024 4:50 AM
