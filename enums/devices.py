@@ -10,5 +10,5 @@ class Devices(Enum):
     
     SPACE_VEHICLES = "space_vehicles"
     
-    UNKN = "unknown"
+    UNKNOWN = "unknown"
     
