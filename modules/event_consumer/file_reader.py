@@ -9,4 +9,3 @@ class FileReader:
     def read_files(file_name):
         with open(file_name, 'r') as file:
             return file.read()
-            # return file.read().strip().split('\n')
