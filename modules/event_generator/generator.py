@@ -9,27 +9,30 @@ import time
 
 
 class Generator:
+    files_to_generate: int
+    time_to_simulate: int
+    
+    def __init__(self):
+        config_params = FileReader.get_config_params()
 
-    def generate_events():
+        self.files_to_generate = random.randint(int(config_params[1]),int(config_params[2]))
+        self.time_to_simulate = int(config_params[0])
+
+    def generate_events(self):
         file_writer :FileWriter = FileWriter
         file_name_builder :FileNameBuilder = FileNameBuilder()
-        config_params = FileReader.get_config_params()
         
         generated_files = 0
-
-        files_to_generate = random.randint(int(config_params[2]),int(config_params[1]))
-        time_to_simulate = int(config_params[2])
-
-        delta = time_to_simulate/files_to_generate
+        delta = self.time_to_simulate/self.files_to_generate
         files_number = 1
-        now = datetime.now()
+    
         if delta < 1:
             delta = 1
-            files_number = int(math.ceil(files_to_generate/time_to_simulate))
+            files_number = int(math.ceil(self.files_to_generate/self.time_to_simulate))
         else:
          delta = int(delta)
     
-        while generated_files < files_to_generate:
+        while generated_files < self.files_to_generate:
             for i in range (files_number):
                 event = ev.Event()
                 file_writer.write(event, file_name_builder.build_name(event))

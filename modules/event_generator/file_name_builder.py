@@ -3,7 +3,10 @@ from models.event import Event
 from enums.mission import Mission
 
 class FileNameBuilder:
-    counter = Counter()
+    counter: Counter
+    
+    def __init__(self):
+        self.counter = Counter()
     
     def build_name(self, event: Event):
         if event.mission == Mission.CLNM:

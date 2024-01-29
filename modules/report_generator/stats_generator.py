@@ -6,11 +6,9 @@ class StatsGenerator:
     events: list
     devices_failing: dict
     
-    
     def __init__(self, events):
         self.events = events
         
-    
     def generate_stats(self):
         stats_list = []
         for mission in Mission:
@@ -33,6 +31,20 @@ class StatsGenerator:
         
         return list
     
+    def get_data_stats(self):
+        stats = {}
+        aux = {}
+        for mission in Mission:
+            list = self.__get_status_by_mission(mission.name)
+            aux[mission.name] = len(list)/len(self.events)
+        stats["MISSION"] = aux
+        aux = {}
+        for device in Devices:
+            counter = self.__get_devices_data(device.name)
+            aux[device.name] = counter/len(self.events)
+        stats["DEVICES"] = aux
+        
+        return stats
     
     def __get_status_by_mission(self, mission: str):
         list = []
@@ -40,6 +52,13 @@ class StatsGenerator:
             if event.mission.name == mission:
                 list.append(event)
         return list
+    
+    def __get_devices_data(self, device: str):
+        counter = 0
+        for event in self.events:
+            if event.device_type.name == device:
+                counter += 1
+        return counter
     
     def __get_status(self, event_list: list):
         excellent_count = 0

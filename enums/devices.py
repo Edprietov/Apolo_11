@@ -2,13 +2,13 @@ from enum import Enum
 
 class Devices(Enum):
 
-    SATELLITES = "satellites"
+    SATELLITES = "SATELLITES"
 
-    SPACECRAFT = "spacecraft"
+    SPACECRAFT = "SPACECRAFT"
 
-    SUITS = "suits"
+    SUITS = "SUITS"
     
-    SPACE_VEHICLES = "space_vehicles"
+    SPACE_VEHICLES = "SPACE_VEHICLES"
     
-    UNKNOWN = "unknown"
+    UNKNOWN = "UNKNOWN"
     

@@ -21,9 +21,10 @@ class EventsReader:
             event = Event()
             event.date = event_content["date"]
             event.mission = Mission(event_content["mission"].lower())
-            event.device_type = Devices(event_content["device_type"].lower())
+            event.device_type = Devices(event_content["device_type"])
             event.device_status = Status(event_content["device_status"].lower())
             event.hash = event_content["hash"]
             event_list.append(event)
             
+    
         return event_list
