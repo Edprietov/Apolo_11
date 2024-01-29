@@ -3,21 +3,35 @@ from modules.event_consumer.events_reader import EventsReader
 from modules.report_generator.stats_generator import StatsGenerator
 from modules.report_generator.report_writer import ReportWriter
 from datetime import datetime
-from models.event import Event
-from enums.mission import Mission
-from enums.status import Status
-from enums.devices import Devices
+
+import os
+import shutil
 
 
-date = datetime.now().strftime("%d%m%Y%H%M%S")
+simulation_number: int = 1
+os.mkdir(f"./reports")
+os.mkdir(f"./backup")
+os.mkdir(f"./devices")
 
-Generator.generate_events()
+for i in range(5):
 
-events_list = EventsReader.read_events()
-    
-stats_generator = StatsGenerator(events_list)
+    date: str = datetime.now().strftime("%d%m%Y%H%M%S")
 
-report_writer = ReportWriter(stats_generator, date)
+    Generator.generate_events()
 
-report_writer.write_report()
+    events_list = EventsReader.read_events()
+        
+    stats_generator = StatsGenerator(events_list)
 
+    report_writer = ReportWriter(stats_generator, date)
+
+    report_writer.write_report()
+
+    os.mkdir(f"./backup/Simulation_{simulation_number}")
+
+    file_names = os.listdir("./devices")
+        
+    for file_name in file_names:
+        shutil.move(os.path.join("./devices", file_name), f"./backup/Simulation_{simulation_number}")
+
+    simulation_number += 1

@@ -1,5 +1,5 @@
 simulation_duration: 20
-files_per_batch_max: 100
+files_per_batch_max: 10
 files_per_batch_min: 1
 initial_date: 1/1/2008 1:30 PM
 final_date: 1/1/2024 4:50 AM
